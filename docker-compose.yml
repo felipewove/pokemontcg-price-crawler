@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # command: npm run serve
     volumes:
       - .:/app
     ports:
