@@ -7,7 +7,7 @@ docker-compose build
 ```
 
 ## Running
-Pass a collection code from LigaPokemon as argument when running. Check all codes [here](../blob/master/translator.py).
+Pass a collection code from LigaPokemon as argument when running. Check all codes [here](../master/translator.py).
 
 Note: LigaPokemon don't use oficial abreviations.
 
