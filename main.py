@@ -4,7 +4,7 @@ import sys
 
 import requests
 from bs4 import BeautifulSoup
-from util import split_name_code
+from util import split_name_code, parse_price
 
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
 collection_arg = sys.argv[1]
@@ -28,9 +28,9 @@ while current_page:
             "name_pt": splitted_name["name_pt"],
             "name_en": splitted_name["name_en"],
             "code": splitted_name["code"],
-            "price_min": row.find(class_="preMen").p.contents[0],
-            "price_avg": row.find(class_="preMed").p.contents[0],
-            "price_max": row.find(class_="preMai").p.contents[0],
+            "price_min": parse_price(row.find(class_="preMen").p.contents[0]),
+            "price_avg": parse_price(row.find(class_="preMed").p.contents[0]),
+            "price_max": parse_price(row.find(class_="preMai").p.contents[0]),
         }
         writer.writerow(content.values())
     current_page = current_page + 1 if current_page <= total_pages else None

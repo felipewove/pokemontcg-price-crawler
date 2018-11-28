@@ -12,3 +12,7 @@ def split_name_code(name_ligapokemon):
     code = name_ligapokemon.split(" (")[1].split("/")[0]
 
     return {"name_pt": name_pt, "name_en": name_en, "code": code}
+
+
+def parse_price(price):
+    return price[3:-1].replace(",", ".")
