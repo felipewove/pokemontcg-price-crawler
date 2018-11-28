@@ -1,28 +1,25 @@
 import csv
+import datetime
 import sys
 
 import requests
 from bs4 import BeautifulSoup
 from util import split_name_code
 
-# from pokemontcgsdk import Card, Set
-
-writer = csv.writer(open("export.csv", "w", newline=""))
-
-# collection = Set.find('sm8')
-
-# LigaPokemon paginates by 30
-# total_pages = int(collection.total_cards / 30) + 1
-
+timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
 collection_arg = sys.argv[1]
+writer = csv.writer(open(f"export_{timestamp}_{collection_arg}.csv", "w"))
+
+url = "https://ligapokemon.com.br/?view=cards/search&card=ed={}&page={}"
+
 current_page = 1
 total_pages = None
-url = "https://ligapokemon.com.br/?view=cards/search&card=ed={}&page={}"
 while current_page:
     page = requests.get(url.format(collection_arg, current_page))
     soup = BeautifulSoup(page.content, "html.parser")
-    # soup = BeautifulSoup(open("backup.html", "r"), 'html.parser')
-    total_pages = int(soup.find("li", id="paginacao-1").b.contents[0]) / 30 + 1
+    total_pages = round(int(soup.find(id="paginacao-1").b.contents[0]) / 30)
+    # soup = BeautifulSoup(open("backup.html", "r"), "html.parser")
+
     rows = soup.find("table", id="cotacao-busca").find_all("tr")
     # first row is table header, so ignore it
     for row in rows[1:]:
