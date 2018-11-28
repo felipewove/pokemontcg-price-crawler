@@ -17,5 +17,4 @@ docker-compose run crawler python test.py <ARG:collection_code>
 
 ## TODO
 
-* Save in CSV, with timestamp
-* Given a collection, get all prices (now is just page 1, that returns 30 cards)
+* Save CSV name with timestamp
