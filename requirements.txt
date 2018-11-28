@@ -1,3 +1,4 @@
-beautifulsoup4=4.6.3
+beautifulsoup4==4.6.3
 pokemontcgsdk==2.0.0
 requests==2.20.1
+black
