@@ -1,5 +1,5 @@
 # Project Stuff
-export.csv
+export*.csv
 backup.html
 
 # Byte-compiled / optimized / DLL files
