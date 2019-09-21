@@ -1,6 +1,7 @@
 import csv
 import datetime
 import sys
+from math import ceil
 
 import requests
 from bs4 import BeautifulSoup
@@ -17,7 +18,7 @@ total_pages = None
 while current_page:
     page = requests.get(url.format(collection_arg, current_page))
     soup = BeautifulSoup(page.content, "html.parser")
-    total_pages = round(int(soup.find(id="paginacao-1").b.contents[0]) / 30)
+    if total_pages == None: total_pages = ceil(int(soup.find(id="paginacao-1").b.contents[0]) / 30)
     # soup = BeautifulSoup(open("backup.html", "r"), "html.parser")
 
     rows = soup.find("table", id="cotacao-busca").find_all("tr")
@@ -33,4 +34,4 @@ while current_page:
             "price_max": parse_price(row.find(class_="preMai").p.contents[0]),
         }
         writer.writerow(content.values())
-    current_page = current_page + 1 if current_page <= total_pages else None
+    current_page = current_page + 1 if current_page < total_pages else None
