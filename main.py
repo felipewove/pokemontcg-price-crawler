@@ -14,7 +14,7 @@ for collection_arg in sys.argv[1:]:
     current_page = 1
     total_pages = None
     while current_page:
-        writer = csv.writer(open(f"export_{timestamp}_{collection_arg}.csv", "w"))
+        writer = csv.writer(open(f"exports/export_{timestamp}_{collection_arg}.csv", "w"))
         page = requests.get(url.format(collection_arg, current_page))
         soup = BeautifulSoup(page.content, "html.parser")
         total_pages = round(int(soup.find(id="paginacao-1").b.contents[0]) / 30)
