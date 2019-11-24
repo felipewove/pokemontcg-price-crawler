@@ -12,5 +12,5 @@ Pass a collection code from LigaPokemon as argument when running. Check all code
 Note: LigaPokemon don't use oficial abreviations.
 
 ```bash
-docker-compose run crawler python main.py <ARG:collection_code>
+docker-compose run crawler python main.py <ARG:collection_code> [<ARG:collection_code>] ... [<ARG:collection_code>]
 ```
