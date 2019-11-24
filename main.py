@@ -18,7 +18,7 @@ for collection_arg in sys.argv[1:]:
         writer = csv.writer(open(f"exports/export_{timestamp}_{collection_arg}.csv", "w"))
         page = requests.get(url.format(collection_arg, current_page))
         soup = BeautifulSoup(page.content, "html.parser")
-        if total_pages == None:
+        if not total_pages:
             total_pages = ceil(int(soup.find(id="paginacao-1").b.contents[0]) / 30)
         # soup = BeautifulSoup(open("backup.html", "r"), "html.parser")
 
