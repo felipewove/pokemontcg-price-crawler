@@ -5,7 +5,8 @@ from math import ceil
 
 import requests
 from bs4 import BeautifulSoup
-from util import split_name_code, parse_price
+
+from util import parse_price, split_name_code
 
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
 
