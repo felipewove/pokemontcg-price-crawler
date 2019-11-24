@@ -6,7 +6,7 @@ def parse_names(names):
 
 
 def split_name_code(name_ligapokemon):
-    names = ' '.join(name_ligapokemon.split(" ")[:-1])
+    names = " ".join(name_ligapokemon.split(" ")[:-1])
     name_pt, name_en = parse_names(names)
 
     code = name_ligapokemon.split(" (")[-1].split("/")[0]
