@@ -1,7 +1,7 @@
 def parse_names(names):
     splitted_names = names.split(" / ")
     name_pt = splitted_names[0]
-    name_en = splitted_names[1] if len(splitted_names) > 1 else ""
+    name_en = splitted_names[1] if len(splitted_names) > 1 else name_pt
     return name_pt, name_en
 
 
